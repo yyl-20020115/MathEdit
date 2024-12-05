@@ -51,7 +51,7 @@ void CCmdDelSel::UnExecute()
 	for (int i=1; i<=m_DelBox.GetSize(); i++)
 		m_SelParent->InsertBox(m_SelStartIndex+i-1,m_DelBox[i-1]);
 	m_Editor->SetStartSel(m_SelParent->GetBox(m_SelStartIndex));
-	m_Editor->SetEndSel(m_SelParent->GetBox(m_SelStartIndex+m_DelBox.GetSize()-1));
+	m_Editor->SetEndSel(m_SelParent->GetBox(m_SelStartIndex+(int)m_DelBox.GetSize()-1));
 	m_Editor->SetCursor(m_SelParent->GetBox(m_CursorPos));
 }
 

@@ -49,7 +49,7 @@ void CMFrac::Layout(CDC *pDC)
 	SetHeight(box1->GetHeight()+box2->GetHeight()+2*g+p);
 
 	ZeroMemory(&lf, sizeof(lf));
-	_tcscpy(lf.lfFaceName,_T("Lucida Bright Math Symbol"));
+	_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR),_T("Lucida Bright Math Symbol"));
 	lf.lfCharSet=SYMBOL_CHARSET;
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72);
 	lf.lfItalic=FALSE;

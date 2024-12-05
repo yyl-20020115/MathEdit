@@ -27,7 +27,7 @@ void CCompositeBox::AddBox(CBox *box)
 {
 	int n;
 	m_Children.Add(box);
-	n=m_Children.GetSize()-1;
+	n=(int)m_Children.GetSize()-1;
 	m_Children[n]->SetParent(this);
 	m_Children[n]->SetIndex(n);	
 	m_Children[n]->SetFontSize(GetFontSize());
@@ -51,7 +51,7 @@ CBox* CCompositeBox::GetBox(int nIndex)
 
 int CCompositeBox::GetChildrenCount()
 {
-	return m_Children.GetSize();
+	return (int)m_Children.GetSize();
 }
 
 void CCompositeBox::InsertBox(int nIndex, CBox *box)
@@ -153,7 +153,7 @@ void CCompositeBox::Serialize(CArchive &ar)
 			ar >> st;
 			box=CFactory::instance(st);
 			if (box==NULL)
-				AfxThrowArchiveException(CArchiveException::generic,_T(""));
+				AfxThrowArchiveException(CArchiveException::genericException,_T(""));
 			box->Serialize(ar);
 			AddBox(box);
 		}

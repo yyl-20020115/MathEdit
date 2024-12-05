@@ -695,75 +695,75 @@ void CEditorCtrl::InsertElement(CString id, int more)
 	if (!m_bCanAdd)
 		return;
 
-	if (id=="MFrac"){
+	if (id==_T("MFrac")){
 		CMFrac* box=new CMFrac(
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							),
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							)
 						);
 		InsertBox(box);
 	}
-	if (id=="MRoot"){
+	if (id==_T("MRoot")){
 		InsertBox(InsertRoot(more));
 	}
-	if (id=="MSub"){//Box, Box, NULL
+	if (id==_T("MSub")){//Box, Box, NULL
 		CMSubSup* box=new CMSubSup(
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							),
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							),
 							NULL
 						);
 		InsertBox(box);
 	}
 	
-	if (id=="MSup"){//Box, NULL, Box
+	if (id==_T("MSup")){//Box, NULL, Box
 		CMSubSup* box=new CMSubSup(
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							),
 							NULL,
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							)
 						);
 		InsertBox(box);
 	}
 
-	if (id=="MSubSup"){//Box, Box, Box
+	if (id==_T("MSubSup")){//Box, Box, Box
 		CMSubSup* box=new CMSubSup(
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							),
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							),
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							)
 						);
 		InsertBox(box);
 	}
 	
-	if (id=="MUnderOver"){
+	if (id==_T("MUnderOver")){
 		InsertBox(InsertUnderOver(more-6));
 	}
-	if (id=="MOver"){
+	if (id==_T("MOver")){
 		CMOver* box=new CMOver(
 							new CMRow(
-								new CMI("")
+								new CMI(_T(""))
 							),
 							more+1
 						);
 		InsertBox(box);
 	}
 	
-	if (id=="SUM"){
+	if (id==_T("SUM")){
 		if (more<4)
 			InsertBox(InsertSum(more, (char)0xAA));
 		else if (more<8)
@@ -774,7 +774,7 @@ void CEditorCtrl::InsertElement(CString id, int more)
 			InsertBox(InsertSum(more-12, (char)0x80));	
 	}
 	
-	if (id=="INT"){
+	if (id==_T("INT")){
 		if (more<4)
 			InsertBox(InsertSum(more, (char)0x97));
 		else if (more<8)
@@ -783,12 +783,12 @@ void CEditorCtrl::InsertElement(CString id, int more)
 			InsertBox(InsertSum(more-8, (char)0xB1));
 	}
 
-	if (id=="Brace"){
-		CMBrace* box=new CMBrace( new CMRow (new CMI("")),more);
+	if (id==_T("Brace")){
+		CMBrace* box=new CMBrace( new CMRow (new CMI(_T(""))),more);
 		InsertBox(box);
 	}
 
-	if (id=="MTable"){
+	if (id==_T("MTable")){
 		int r, c;
 		CMTable* box;
 		switch (more){
@@ -888,19 +888,19 @@ CBox* CEditorCtrl::InsertSum(int more, TCHAR ch)
 	CBox *box3=NULL;
 	if (more==0){
 		box2=new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					);
 		box3=new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					);
 	}
 	if (more==1)
 		box2=new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					);
 	if (more==2)
 		box3=new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					);
 	return new CMSymbol(box1, box2, box3, ch);
 }
@@ -912,15 +912,15 @@ CBox* CEditorCtrl::InsertUnderOver(int nType)
 	CBox* box1=NULL;
 	CBox* box2=NULL;
 	CBox* box3=NULL;
-	box1=new CMRow(new CMI(""));
+	box1=new CMRow(new CMI(_T("")));
 	if (nType==2){
-		box2=new CMRow(new CMI(""));
-		box3=new CMRow(new CMI(""));
+		box2=new CMRow(new CMI(_T("")));
+		box3=new CMRow(new CMI(_T("")));
 	}
 	else if (nType==0)
-		box2=new CMRow(new CMI(""));
+		box2=new CMRow(new CMI(_T("")));
 	else
-		box3=new CMRow(new CMI(""));
+		box3=new CMRow(new CMI(_T("")));
 	return (new CMUnderOver(box1, box2, box3));
 }
 
@@ -930,16 +930,16 @@ CBox* CEditorCtrl::InsertRoot(int more)
 	if (more==1)
 		box=new CMRoot(
 				new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					)
 				);
 	else
 		box=new CMRoot(
 				new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					),
 				new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					)
 				);
 	return box;
@@ -963,7 +963,7 @@ void CEditorCtrl::ProcessDelKey()
 			if (box1->GetChildrenCount()>0)
 				m_Cursor->SetBox(box1->GetBox(k));
 			else{
-				box1->AddBox(new CMI(""));
+				box1->AddBox(new CMI(_T("")));
 				m_Cursor->SetBox(box1->GetBox(0));
 				m_Cursor->SetEndBox(TRUE);
 			}
@@ -1214,7 +1214,7 @@ void CEditorCtrl::ProcessLEFTkey(int sh)
 		if (k==0 && !m_Cursor->IsEndBox()){
 			box1=box->GetParent();
 			if (!box1) return;
-			if (box1->ClassName()=="MRow") return;
+			if (box1->ClassName()==_T("MRow")) return;
 			m_EndBox=box1;
 			m_StartBox=box1;
 			if (box1->GetIndex()>0){
@@ -1264,7 +1264,7 @@ void CEditorCtrl::ProcessRIGHTkey(int sh)
 		if (k==box->GetChildrenCount()-1 && m_Cursor->IsEndBox()){
 			box1=box->GetParent();
 			if (!box1) return;
-			if (box1->ClassName()=="Mrow") return;
+			if (box1->ClassName()==_T("Mrow")) return;
 			//box1->SetSelect(TRUE);
 			m_StartBox=box1;
 			m_EndBox=box1;
@@ -1316,7 +1316,7 @@ void CEditorCtrl::ProcessShortCut(UINT nChar)
 		case 0x46://Fraction
 			newBox=new CMFrac(
 						new CMRow(),
-						new CMRow(new CMI(""))
+						new CMRow(new CMI(_T("")))
 					);
 			break;
 		case 0x52://Root
@@ -1325,7 +1325,7 @@ void CEditorCtrl::ProcessShortCut(UINT nChar)
 		case 0x4C://Lower Script
 			newBox=new CMSubSup(
 						new CMRow(),
-						new CMRow(new CMI("")),
+						new CMRow(new CMI(_T(""))),
 						NULL
 					);
 			break;
@@ -1333,7 +1333,7 @@ void CEditorCtrl::ProcessShortCut(UINT nChar)
 			newBox=new CMSubSup(
 						new CMRow(),
 						NULL,
-						new CMRow(new CMI(""))
+						new CMRow(new CMI(_T("")))
 					);
 			break;
 		}
@@ -1396,7 +1396,7 @@ void CEditorCtrl::InsertFuncOperator(CString id, int more)
 					),
 					NULL,
 				new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					)
 				);
 		InsertBox(box);
@@ -1408,7 +1408,7 @@ void CEditorCtrl::InsertFuncOperator(CString id, int more)
 					new CMO(id)
 					),
 				new CMRow(
-					new CMI("")
+					new CMI(_T(""))
 					),
 				NULL
 				);
@@ -1422,7 +1422,7 @@ void CEditorCtrl::InsertFuncOperator(CString id, int more)
 					),
 					NULL,
 					new CMRow(
-						new CMI("")
+						new CMI(_T(""))
 					)
 				);
 		InsertBox(box);
@@ -2004,7 +2004,7 @@ void CEditorCtrl::PasteFromClipboard()
 	if(!hmem)
 		return;
 
-	CMemFile sf((BYTE*) ::GlobalLock(hmem), ::GlobalSize(hmem));
+	CMemFile sf((BYTE*) ::GlobalLock(hmem), (UINT)::GlobalSize(hmem));
 
 	CArchive ar (&sf, CArchive::load);
 	CBoxHolder Temp;

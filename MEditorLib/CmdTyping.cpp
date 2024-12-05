@@ -81,7 +81,7 @@ void CCmdTyping::UnExecute()
 		for (int i=0; i<m_SelBox.GetSize(); i++)
 			m_ParentBox->InsertBox(i+m_SelStartIndex,m_SelBox[i]);
 		m_Editor->SetStartSel(m_ParentBox->GetBox(m_SelStartIndex));
-		m_Editor->SetEndSel(m_ParentBox->GetBox(m_SelStartIndex+m_SelBox.GetSize()-1));
+		m_Editor->SetEndSel(m_ParentBox->GetBox((int)m_SelStartIndex+(int)m_SelBox.GetSize()-1));
 	}
 	if (m_ParentBox->GetChildrenCount()==0)
 		m_ParentBox->AddBox(new CMI());

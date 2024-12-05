@@ -31,7 +31,7 @@ CMacroCommand::~CMacroCommand()
 
 int CMacroCommand::GetCommandCount()
 {
-	return m_CmdList.GetCount();
+	return (int)m_CmdList.GetCount();
 }
 
 void CMacroCommand::AddCommand(CCommand *cmd)

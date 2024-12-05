@@ -63,7 +63,7 @@ BOOL CToolBarDlg::OnInitDialog()
 
 	// Change of the default window procedure
 	WNDPROC temp = reinterpret_cast<WNDPROC>(
-		::SetWindowLong(GetSafeHwnd(), 
+		::SetWindowLongPtr(GetSafeHwnd(), 
 					GWLP_WNDPROC, 
 					reinterpret_cast<INT_PTR>(NewWndProc) ));
 	if ( !m_MFCWndProc ) 

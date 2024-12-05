@@ -36,29 +36,29 @@ CFactory::~CFactory()
 
 CBox* CFactory::instance(CString ID)
 {
-	if (ID=="MI")
+	if (ID==_T("MI"))
 		return new CMI();
-	if (ID=="MN")
+	if (ID==_T("MN"))
 		return new CMN();
-	if (ID=="MO")
+	if (ID==_T("MO"))
 		return new CMO();
-	if (ID=="MRow")
+	if (ID==_T("MRow"))
 		return new CMRow();
-	if (ID=="MF")
+	if (ID==_T("MF"))
 		return new CMFrac();
-	if (ID=="MOver")
+	if (ID==_T("MOver"))
 		return new CMOver();
-	if (ID=="MRoot")
+	if (ID==_T("MRoot"))
 		return new CMRoot();
-	if (ID=="MSubSup")
+	if (ID==_T("MSubSup"))
 		return new CMSubSup();
-	if (ID=="MTable")
+	if (ID==_T("MTable"))
 		return new CMTable();
-	if (ID=="MBrace")
+	if (ID==_T("MBrace"))
 		return new CMBrace();
-	if (ID=="MEntity")
+	if (ID==_T("MEntity"))
 		return new CMEntity();
-	if (ID=="MSymbol")
+	if (ID==_T("MSymbol"))
 		return new CMSymbol();
 	_ASSERT(FALSE);
 	return NULL;

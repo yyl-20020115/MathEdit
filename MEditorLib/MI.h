@@ -17,7 +17,7 @@ public:
 	CString ToMathML(int nLevel);
 	CString ClassName();
 	CMI();
-	CMI(CString st=_T(""));
+	CMI(CString st);
 	virtual ~CMI();
 
 };

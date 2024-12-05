@@ -11,12 +11,12 @@
 CMI::CMI(CString st)
 {
 	SetData(st);
-	unsigned char ch;
-	if (st!="")
+	TCHAR ch;
+	if (st!=_T(""))
 		ch=st[0];
 	else ch=0;
 	m_CharSet=DEFAULT_CHARSET;
-	m_FontName="Times New Roman";
+	m_FontName=_T("Times New Roman");
 	if (isalpha(ch) || ch>127)
 		m_nItalic=TRUE;
 	else
@@ -36,14 +36,14 @@ CMI::~CMI()
 
 CString CMI::ClassName()
 {
-	return "MI";
+	return _T("MI");
 }
 
 
 CString CMI::ToMathML(int nLevel)
 {
-	CString tab(' ', 2*nLevel);
-	return tab + "<mi>" + GetData() + "</mi>";
+	CString tab(_T(' '), 2*nLevel);
+	return tab + _T("<mi>") + GetData() + _T("</mi>");
 }
 
 

@@ -46,7 +46,7 @@ void CText::Layout(CDC* pDC)
 	CFont* pNewFont;
 	CString st;
 	ZeroMemory(&lf, sizeof(lf));
-	_tcscpy(lf.lfFaceName, m_FontName);
+	_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR),m_FontName);
 	lf.lfHeight = -MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72);
 	lf.lfCharSet = m_CharSet;
 	lf.lfItalic = m_nItalic;
@@ -80,7 +80,7 @@ void CText::Draw(CDC* pDC)
 	CPen* pOldPen;
 	CPen* pNewPen;
 	ZeroMemory(&lf, sizeof(lf));
-	_tcscpy(lf.lfFaceName, m_FontName);
+	_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR), m_FontName);
 	lf.lfHeight = -MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72);
 	lf.lfCharSet = m_CharSet;
 	lf.lfItalic = m_nItalic;
@@ -129,7 +129,7 @@ void CText::Draw(CDC* pDC)
 
 	if (m_bInverted && !IsTemplate()) {
 		CSize sz;
-		_tcscpy(lf.lfFaceName, _T("Lucida Bright Math Symbol"));
+		_tcscpy_s(lf.lfFaceName,sizeof(lf.lfFaceName)/sizeof(TCHAR), _T("Lucida Bright Math Symbol"));
 		lf.lfItalic = FALSE;
 		pNewFont = new CFont();
 		pNewFont->CreateFontIndirect(&lf);

@@ -160,22 +160,22 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 			m_Editor.InsertElement("EQU",wParam);
 		break;
 		*/
-		if (wParam<m_StdOp.GetSize() && m_StdOp[wParam]!=_T(""))
+		if ((INT_PTR)wParam<m_StdOp.GetSize()!=0 && m_StdOp[wParam]!=_T(""))
 			m_Editor.InsertSpecialElement(m_StdOp[wParam]);
 		break;
 	case IDC_BRACE: // form toolbar Braces
-		m_Editor.InsertElement(_T("Brace"),wParam);
+		m_Editor.InsertElement(_T("Brace"), (int)wParam);
 		break;
 	case IDC_COREDATA: // form toolbar Core Data
-		if (wParam<m_GeoOp.GetSize() && m_GeoOp[wParam]!= _T(""))
+		if ((INT_PTR)wParam<m_GeoOp.GetSize() != 0 && m_GeoOp[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_GeoOp[wParam]);
 		break;
 	case IDC_SUM: // form toolbar Sum
-		m_Editor.InsertElement(_T("SUM"), wParam);
+		m_Editor.InsertElement(_T("SUM"), (int)wParam);
 		break;
 
 	case IDC_PROD: // form toolbar Prod (same behaviour as sum)
-		if (wParam<m_DotOp.GetSize() && m_DotOp[wParam]!= _T(""))
+		if ((INT_PTR)wParam<m_DotOp.GetSize() && m_DotOp[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_DotOp[wParam]);
 		break;
 
@@ -270,11 +270,11 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 		break;
 
 	case IDC_INTEGRAL: // form toolbar Integral
-		m_Editor.InsertElement(_T("INT"),wParam);
+		m_Editor.InsertElement(_T("INT"),(int)wParam);
 		break;
 
 	case IDC_DERIVATIVE: // form toolbar derivative
-		if (wParam<m_MoreSym.GetSize() && m_MoreSym[wParam]!= _T(""))
+		if ((INT_PTR)wParam<m_MoreSym.GetSize() && m_MoreSym[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_MoreSym[wParam]);
 		break;
 
@@ -282,7 +282,7 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 		if(wParam== 0)
 			m_Editor.InsertElement(_T("MFrac"));
 		if(wParam== 1 || wParam==2)
-			m_Editor.InsertElement(_T("MRoot"),wParam);
+			m_Editor.InsertElement(_T("MRoot"),(int)wParam);
 		if (wParam==3)
 			m_Editor.InsertElement(_T("MSup"));
 		if (wParam==4)
@@ -290,25 +290,25 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 		if (wParam==5)
 			m_Editor.InsertElement(_T("MSubSup"));
 		if (wParam>5)
-			m_Editor.InsertElement(_T("MUnderOver"), wParam);
+			m_Editor.InsertElement(_T("MUnderOver"), (int)wParam);
 		break;
 	case IDC_MATRIX: // form toolbar matrix
-		m_Editor.InsertElement(_T("MTable"),wParam);
+		m_Editor.InsertElement(_T("MTable"), (int)wParam);
 		break;
 	case IDC_VECTOR: // form toolbar vector
 		//if (wParam<2)
-		m_Editor.InsertElement(_T("MOver"),wParam);
+		m_Editor.InsertElement(_T("MOver"), (int)wParam);
 		break;
 	case IDC_ARROWS: // form toolbar arrows
-		if (wParam<m_ArrOp.GetSize() && m_ArrOp[wParam]!= _T(""))
+		if ((INT_PTR)wParam<m_ArrOp.GetSize() && m_ArrOp[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_ArrOp[wParam]);
 		break;
 	case IDC_UPPER_GREEK: // form toolbar upper greek
-		if (wParam<m_UpperGreek.GetSize() && m_UpperGreek[wParam]!= _T(""))
+		if ((INT_PTR)wParam<m_UpperGreek.GetSize() && m_UpperGreek[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_UpperGreek[wParam]);
 		break;
 	case IDC_LOWER_GREEK: // form toolbar lower greek (same behaviour as upper greek)
-		if (wParam<m_LowerGreek.GetSize() && m_LowerGreek[wParam]!= _T(""))
+		if ((INT_PTR)wParam<m_LowerGreek.GetSize() && m_LowerGreek[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_LowerGreek[wParam]);
 		break;
 	default:

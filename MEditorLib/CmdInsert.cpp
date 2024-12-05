@@ -106,7 +106,7 @@ void CCmdInsert::UnExecute()
 			for (int i=1; i<=m_SelBox.GetSize(); i++)
 				m_CursorParent->InsertBox(m_SelStartIndex+i-1, m_SelBox[i-1]);
 			m_Editor->SetStartSel(m_CursorParent->GetBox(m_SelStartIndex));
-			m_Editor->SetEndSel(m_CursorParent->GetBox(m_SelStartIndex+m_SelBox.GetSize()-1));
+			m_Editor->SetEndSel(m_CursorParent->GetBox(m_SelStartIndex+(int)m_SelBox.GetSize()-1));
 		}
 		else{
 			m_CursorParent->AddBox(new CMI());
@@ -122,7 +122,7 @@ void CCmdInsert::UnExecute()
 		for (int i=1; i<=m_SelBox.GetSize(); i++)
 			m_CursorParent->InsertBox(m_SelStartIndex+i-1, m_SelBox[i-1]);
 		m_Editor->SetStartSel(m_CursorParent->GetBox(m_SelStartIndex));
-		m_Editor->SetEndSel(m_CursorParent->GetBox(m_SelStartIndex+m_SelBox.GetSize()-1));
+		m_Editor->SetEndSel(m_CursorParent->GetBox(m_SelStartIndex+(int)m_SelBox.GetSize()-1));
 	}
 	else{
 		m_Editor->SetStartSel(NULL);

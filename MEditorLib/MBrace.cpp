@@ -5,11 +5,6 @@
 #include "stdafx.h"
 #include "MBrace.h"
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -198,7 +193,7 @@ void CMBrace::Layout(CDC *pDC)
 	CSize sz2;
 	int h, w;
 	ZeroMemory(&lf, sizeof(lf));
-	_tcscpy(lf.lfFaceName,_T("Lucida Math Bright Extension"));
+	_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR),_T("Lucida Math Bright Extension"));
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72);
 	lf.lfCharSet=SYMBOL_CHARSET;
 	newFont.CreateFontIndirect(&lf);
@@ -206,11 +201,11 @@ void CMBrace::Layout(CDC *pDC)
 	if (m_BraceChar1>0)
 		sz1=pDC->GetTextExtent(CString((char)m_BraceChar1,1));
 	else
-		sz1=pDC->GetTextExtent("X");
+		sz1=pDC->GetTextExtent(_T("X"));
 	pDC->SelectObject(pOldFont);
 	newFont.DeleteObject();
 
-	_tcscpy(lf.lfFaceName,_T("Times New Roman"));
+	_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR),_T("Times New Roman"));
 	lf.lfCharSet=DEFAULT_CHARSET;
 	newFont.CreateFontIndirect(&lf);
 	pOldFont=pDC->SelectObject(&newFont);
@@ -271,7 +266,7 @@ void CMBrace::Draw(CDC *pDC)
 	x=GetLeft();
 	y=GetTop();
 	if (m_bUseReplace){
-		_tcscpy(lf.lfFaceName,_T("Times New Roman"));
+		_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR),_T("Times New Roman"));
 		lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 		newFont.CreateFontIndirect(&lf);
 		pOldFont=pDC->SelectObject(&newFont);
@@ -587,7 +582,7 @@ int CMBrace::GetPenWidth()
 
 CString CMBrace::ClassName()
 {
-	return "MBrace";
+	return _T("MBrace");
 }
 
 CString CMBrace::ToMathML(int nLevel)
@@ -598,66 +593,66 @@ CString CMBrace::ToMathML(int nLevel)
 	CString rs;
 	switch (m_nType){
 	case 0://(box)
-		br1="(";
-		br2=")";
+		br1=_T("(");
+		br2=_T(")");
 		break;
 	case 1://||
-		br1="|";
-		br2="|";
+		br1=_T("|");
+		br2=_T("|");
 		break;
 	case 2://[box]
-		br1="[";
-		br2="]";
+		br1=_T("[");
+		br2=_T("]");
 		break;
 	case 3://{box}
-		br1="{";
-		br2="}";
+		br1=_T("{");
+		br2=_T("}");
 		break;
 	case 4://(box
-		br1="(";
-		br2="";
+		br1=_T("(");
+		br2=_T("");
 		break;
 	case 5://|box
-		br1="|";
-		br2="";
+		br1=_T("|");
+		br2=_T("");
 		break;
 	case 6://[box
-		br1="[";
-		br2="";
+		br1=_T("[");
+		br2=_T("");
 		break;
 	case 7://{box
-		br1="{";
-		br2="";
+		br1=_T("{");
+		br2=_T("");
 		break;
 	case 8://box)
-		br1="";
-		br2=")";
+		br1=_T("");
+		br2=_T(")");
 		break;
 	case 9://box|
-		br1="";
-		br2="|";
+		br1=_T("");
+		br2=_T("|");
 		break;
 	case 10://box]
-		br1="";
-		br2="]";
+		br1=_T("");
+		br2=_T("]");
 		break;
 	case 11://box}
-		br1="";
-		br2="}";
+		br1=_T("");
+		br2=_T("}");
 		break;
 	default:
 		_ASSERT(FALSE);
-		br1="";
-		br2="";
+		br1=_T("");
+		br2=_T("");
 		break;
 	}
-	rs=tab + "<mrow>" + crlf;
-	if (br1!="")
-		rs+=tab + "  <mo>"+br1+"</mo>" + crlf;
+	rs=tab + _T("<mrow>") + crlf;
+	if (br1!=_T(""))
+		rs+=tab + _T("  <mo>")+br1+_T("</mo>") + crlf;
 	rs+=GetBox(0)->ToMathML(nLevel+1) + crlf;
-	if (br2!="")
-		rs+=tab + "  <mo>"+br2+"</mo>" + crlf;
-	rs+=tab + "</mrow>";
+	if (br2!=_T(""))
+		rs+=tab + _T("  <mo>"+br2+"</mo>") + crlf;
+	rs+=tab + _T("</mrow>");
 	return rs;
 
 }

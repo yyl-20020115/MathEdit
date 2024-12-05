@@ -6,11 +6,6 @@
 #include "MTable.h"
 #include "MI.h"
 #include "Mrow.h"
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
 
 //This class implement a table. Each table contains few rows. Each row contains few cell
 //Each cell is class MTd.
@@ -24,7 +19,7 @@ CMTable::CMTable(int nRow, int nCol)
 	CBox* box;
 	int i;
 	for (i=0; i<nRow*nCol; i++){
-		box=new CMRow(new CMI(""));
+		box=new CMRow(new CMI(_T("")));
 		AddBox(box);
 	}
 	m_RowSpace=-1;
@@ -58,19 +53,19 @@ void CMTable::Layout(CDC *pDC)
 	TEXTMETRIC tm;
 	if (m_RowSpace==-1){//Set row spacing to default value
 		ZeroMemory(&lf, sizeof(lf));
-		_tcscpy(lf.lfFaceName,_T("Times New Roman"));
+		_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR),_T("Times New Roman"));
 		lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 		newFont.CreateFontIndirect(&lf);
 		pOldFont=pDC->SelectObject(&newFont);
-		sz=pDC->GetTextExtent(" ");
+		sz=pDC->GetTextExtent(_T(" "));
 		pDC->SelectObject(pOldFont);
 		newFont.DeleteObject();
 		
 		CBox* box=GetParent();
 		CBox* box1=box->GetParent();
 		//Neu ma tran dung doc lap
-		if (box1==NULL || box1->ClassName()=="MRow"){
-			m_RowSpace=sz.cy/1.5;
+		if (box1==NULL || box1->ClassName()==_T("MRow")){
+			m_RowSpace=(int)(sz.cy/1.5);
 			m_ColSpace=sz.cx*2;
 		}
 		else{//Neu ma tran la mot thanh phan cua bieu thuc lon (thay dau enter)
@@ -79,7 +74,7 @@ void CMTable::Layout(CDC *pDC)
 		}
 	}
 
-	_tcscpy(lf.lfFaceName,_T("Lucida Bright Math Symbol"));
+	_tcscpy_s(lf.lfFaceName, sizeof(lf.lfFaceName) / sizeof(TCHAR),_T("Lucida Bright Math Symbol"));
 	lf.lfCharSet=SYMBOL_CHARSET;
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 	newFont.CreateFontIndirect(&lf);
@@ -149,7 +144,7 @@ void CMTable::SetCoord(int cx, int cy)
 
 CString CMTable::ClassName()
 {
-	return "MTable";
+	return _T("MTable");
 }
 //Set spacing between rows
 void CMTable::SetRowSpace(int n)
@@ -182,19 +177,19 @@ CBox* CMTable::GetCell(int r, int c)
 CString CMTable::ToMathML(int nLevel)
 {
 	CString tab(' ', 2*nLevel);
-	CString stab="  ";
+	CString stab=_T("  ");
 	CString st;
-	st=tab + "<mtable>" + crlf;
+	st=tab + _T("<mtable>") + crlf;
 	for (int row=0; row<m_Rows; row++){
-		st+=tab + stab + "<mtr>" + crlf;
+		st+=tab + stab + _T("<mtr>") + crlf;
 		for (int col=0; col<m_Cols; col++){
-			st+=tab + stab + stab + "<mtd>" + crlf;
+			st+=tab + stab + stab + _T("<mtd>") + crlf;
 			st+=GetCell(row, col)->ToMathML(nLevel+3) + crlf;
-			st+=tab + stab + stab + "</mtd>" + crlf;
+			st+=tab + stab + stab + _T("</mtd>") + crlf;
 		}
-		st+=tab + stab + "</mtr>" + crlf;
+		st+=tab + stab + _T("</mtr>") + crlf;
 	}
-	st+=tab + "</mtable>";
+	st+=tab + _T("</mtable>");
 	return st;
 }
 
