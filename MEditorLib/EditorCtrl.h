@@ -135,7 +135,7 @@ private:
 	CBox* InsertRoot(int more);
 	CBox* InsertUnderOver(int nType);
 
-	CBox* InsertSum(int more=0, char ch=(char)0xAA);
+	CBox* InsertSum(int more=0, TCHAR ch=(TCHAR)0xAA);
 	int m_nBaseFontSize;
 	void SelectBox(CBox* box, BOOL b);
 	void InsertBox(CBox* box);

@@ -20,7 +20,7 @@ static char THIS_FILE[]=__FILE__;
 //Box2: Under box
 //Box3: Over box
 //Symbol: Sigma, Prod, Union...
-CMSymbol::CMSymbol(CBox* box1, CBox* box2, CBox* box3, char Symbol)
+CMSymbol::CMSymbol(CBox* box1, CBox* box2, CBox* box3, TCHAR Symbol)
 {
 	if (box1 && box2 && box3){
 		AddBox(box3);
@@ -56,7 +56,7 @@ CMSymbol::~CMSymbol()
 
 CString CMSymbol::ClassName()
 {
-	return "MSymbol";
+	return _T("MSymbol");
 }
 
 void CMSymbol::Layout(CDC *pDC)

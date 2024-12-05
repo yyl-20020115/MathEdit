@@ -6,11 +6,6 @@
 #include "CmdDelete.h"
 #include "MI.h"
 #include "Cursor.h"
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -38,7 +33,7 @@ void CCmdDelete::Execute()
 {
 	m_BoxParent->RemoveBox(m_BoxIndex);
 	if (m_BoxParent->GetChildrenCount()==0){
-		m_BoxParent->AddBox(new CMI(""));
+		m_BoxParent->AddBox(new CMI(_T("")));
 		m_Editor->SetCursor(m_BoxParent->GetBox(0));
 	}
 	else if (m_CursorPos>0)

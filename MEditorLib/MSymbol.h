@@ -21,7 +21,7 @@ public:
 	void Draw(CDC* pDC);
 	void Layout(CDC* pDC);
 	CString ClassName();
-	CMSymbol(CBox* box1, CBox* box2=NULL, CBox* box3=NULL, char Symbol=(char)0xAA);
+	CMSymbol(CBox* box1, CBox* box2=NULL, CBox* box3=NULL, TCHAR Symbol=(TCHAR)0xAA);
 	CMSymbol();
 	virtual ~CMSymbol();
 
@@ -31,7 +31,7 @@ private:
 	int m_nWidthSymbol;
 	int m_nTopSymbol;
 	int m_nLeftSymbol;
-	char m_SymbolChar;
+	TCHAR m_SymbolChar;
 	int m_nType;
 };
 

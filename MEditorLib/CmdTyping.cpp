@@ -9,12 +9,6 @@
 #include "MN.h"
 #include "MO.h"
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
-
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -28,7 +22,7 @@ CCmdTyping::CCmdTyping(CEditorCtrl* ed, UINT nChar)
 	m_Editor=ed;
 	m_CursorPos=cursor->GetIndex();
 	m_ParentBox=cursor->GetParent();
-	_ASSERT(m_ParentBox->ClassName()=="MRow");
+	_ASSERT(m_ParentBox->ClassName()==_T("MRow"));
 	m_SelStartIndex=-1;
 	if (box1 && box2){
 		//Cursor must always be at beginning or ending of selection
@@ -97,8 +91,8 @@ void CCmdTyping::UnExecute()
 
 CBox* CCmdTyping::MakeBox()
 {
-	if (m_Char>='0' && m_Char<='9')
-		return new CMN((char)m_Char);
+	if (m_Char>=_T('0') && m_Char<=_T('9'))
+		return new CMN((TCHAR)m_Char);
 
 	switch (m_Char){
 	case '+':
@@ -106,12 +100,12 @@ CBox* CCmdTyping::MakeBox()
 	case '*':
 	case '<':
 	case '>':
-		return new CMO((char)m_Char);
+		return new CMO((TCHAR)m_Char);
 		break;
 	}
 
 	if (m_Char>=32)
-		return new CMI((char)m_Char);
+		return new CMI((TCHAR)m_Char);
 	else
 		return NULL;
 }

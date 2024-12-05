@@ -5,11 +5,7 @@
 #include "MathEdit.h"
 #include "EditorDlg.h"
 #include "About.h"
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
+
 
 /////////////////////////////////////////////////////////////////////////////
 // CEditorDlg dialog
@@ -164,29 +160,29 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 			m_Editor.InsertElement("EQU",wParam);
 		break;
 		*/
-		if (wParam<m_StdOp.GetSize() && m_StdOp[wParam]!="")
+		if (wParam<m_StdOp.GetSize() && m_StdOp[wParam]!=_T(""))
 			m_Editor.InsertSpecialElement(m_StdOp[wParam]);
 		break;
 	case IDC_BRACE: // form toolbar Braces
-		m_Editor.InsertElement("Brace",wParam);
+		m_Editor.InsertElement(_T("Brace"),wParam);
 		break;
 	case IDC_COREDATA: // form toolbar Core Data
-		if (wParam<m_GeoOp.GetSize() && m_GeoOp[wParam]!="")
+		if (wParam<m_GeoOp.GetSize() && m_GeoOp[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_GeoOp[wParam]);
 		break;
 	case IDC_SUM: // form toolbar Sum
-		m_Editor.InsertElement("SUM", wParam);
+		m_Editor.InsertElement(_T("SUM"), wParam);
 		break;
 
 	case IDC_PROD: // form toolbar Prod (same behaviour as sum)
-		if (wParam<m_DotOp.GetSize() && m_DotOp[wParam]!="")
+		if (wParam<m_DotOp.GetSize() && m_DotOp[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_DotOp[wParam]);
 		break;
 
 	case IDC_FUNCTION: // form toolbar Function
 		switch (wParam){
 			case 0:
-				id="sin";
+				id=_T("sin");
 				more=0;
 				break;
 			case 1:
@@ -274,11 +270,11 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 		break;
 
 	case IDC_INTEGRAL: // form toolbar Integral
-		m_Editor.InsertElement("INT",wParam);
+		m_Editor.InsertElement(_T("INT"),wParam);
 		break;
 
 	case IDC_DERIVATIVE: // form toolbar derivative
-		if (wParam<m_MoreSym.GetSize() && m_MoreSym[wParam]!="")
+		if (wParam<m_MoreSym.GetSize() && m_MoreSym[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_MoreSym[wParam]);
 		break;
 
@@ -304,15 +300,15 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 		m_Editor.InsertElement("MOver",wParam);
 		break;
 	case IDC_ARROWS: // form toolbar arrows
-		if (wParam<m_ArrOp.GetSize() && m_ArrOp[wParam]!="")
+		if (wParam<m_ArrOp.GetSize() && m_ArrOp[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_ArrOp[wParam]);
 		break;
 	case IDC_UPPER_GREEK: // form toolbar upper greek
-		if (wParam<m_UpperGreek.GetSize() && m_UpperGreek[wParam]!="")
+		if (wParam<m_UpperGreek.GetSize() && m_UpperGreek[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_UpperGreek[wParam]);
 		break;
 	case IDC_LOWER_GREEK: // form toolbar lower greek (same behaviour as upper greek)
-		if (wParam<m_LowerGreek.GetSize() && m_LowerGreek[wParam]!="")
+		if (wParam<m_LowerGreek.GetSize() && m_LowerGreek[wParam]!= _T(""))
 			m_Editor.InsertSpecialElement(m_LowerGreek[wParam]);
 		break;
 	default:
@@ -365,7 +361,7 @@ void CEditorDlg::OnParser()
 	pEdit->GetWindowText(st);
 	st.TrimLeft();
 	st.TrimRight();
-	if (st=="") return;
+	if (st== _T("")) return;
 	m_Editor.SetFormulaText(st);
 	m_Editor.ParseFormula();
 	m_Editor.SetFocus();
@@ -386,9 +382,9 @@ void CEditorDlg::InitEntityList()
 	CStringArray tokens;
 	int i, k, j;
 	TCHAR ch;
-	k=st.ReverseFind('\\');
+	k=st.ReverseFind(_T('\\'));
 	st=st.Left(k+1);
-	st=st + "Entity.txt";
+	st=st + _T("Entity.txt");
 	CStdioFile file;
 	tokens.SetSize(7);
 	if (!file.Open(st,CFile::modeRead)){
@@ -401,8 +397,8 @@ void CEditorDlg::InitEntityList()
 			break;
 		if (st=="")
 			break;
-		if (st[st.GetLength()-1]!='\t')
-			st=st+"\t";
+		if (st[st.GetLength()-1]!=_T('\t'))
+			st=st+_T("\t");
 		i=0;
 		for (j=0; j<7; j++){
 			k=i;
@@ -411,7 +407,7 @@ void CEditorDlg::InitEntityList()
 				k=k+1;
 				if (k==st.GetLength())
 					break;
-			} while (ch!='\t'); 
+			} while (ch!=_T('\t')); 
 			tokens[j]=st.Mid(i,k-i-1);
 			//TRACE(st.Mid(i,k-i-1)+"\n");
 			i=k;

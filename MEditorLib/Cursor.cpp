@@ -85,7 +85,7 @@ CBox* CCursor::MoveRightBox(CBox *box)
 		box2=box1->GetParent();
 		if (!box2)
 			return NULL;
-		if (box2->ClassName()=="MRow")
+		if (box2->ClassName()==_T("MRow"))
 			return NULL;
 
 		l=box1->GetIndex();
@@ -119,7 +119,7 @@ CBox* CCursor::MoveLeftBox(CBox *box)
 			box2=box1->GetParent(); //Try to move to the parent
 			if (!box2)
 				return NULL;
-			if (box2->ClassName()=="MRow")
+			if (box2->ClassName()==_T("MRow"))
 				return NULL;
 			l=box1->GetIndex();
 			if (box2->GetChildrenCount()==3 && l==2){	//Special case
@@ -136,7 +136,7 @@ CBox* CCursor::MoveLeftBox(CBox *box)
 					box1=box2->GetParent();//Try to return previous box
 					if (!box1)
 						return NULL;
-					if (box1->ClassName()!="MRow")
+					if (box1->ClassName()!=_T("MRow"))
 						return NULL;
 					m_bEndBox=TRUE;
 					return box1->GetBox(l-1);
@@ -218,7 +218,7 @@ void CCursor::ShowCaret()
 	box=m_CurrentBox->GetParent();
 	if (!box)
 		box=m_CurrentBox;
-	if (box->ClassName()!="MRow")
+	if (box->ClassName()!=_T("MRow"))
 		box=m_CurrentBox;
 	m_pWnd->CreateSolidCaret(1,box->GetHeight());
 	if (m_bEndBox)
@@ -238,7 +238,7 @@ CBox* CCursor::MoveInBox(int cx, int cy, CBox *box)
             if(box1 != NULL)
                return box1;
         }
-		if (box->ClassName()!="MRow")
+		if (box->ClassName()!=_T("MRow"))
 			return box;
     } 
     return NULL;
@@ -267,7 +267,7 @@ void CCursor::MoveInPoint(int cx, int cy)
 
 	CBox* box=MoveInBox(cx, cy, m_Root);
 	if (box){
-		_ASSERT(box->ClassName()!="MRow");
+		_ASSERT(box->ClassName()!=_T("MRow"));
 		if (box->GetIndex()==0 && cx<box->GetLeft()+box->GetWidth()/2 && !box->IsTemplate())
 			m_bEndBox=FALSE;
 		else
@@ -349,7 +349,7 @@ CBox* CCursor::MoveUpBox(CBox *box)
 	if (!box2)
 		return NULL;
 	
-	if (box2->ClassName()=="MRow")
+	if (box2->ClassName()==_T("MRow"))
 		return NULL;
 
 	k=box1->GetIndex();
@@ -373,7 +373,7 @@ CBox* CCursor::MoveDownBox(CBox *box)
 	if (!box2)
 		return NULL;
 	
-	if (box2->ClassName()=="MRow")
+	if (box2->ClassName()==_T("MRow"))
 		return NULL;
 
 	k=box1->GetIndex();

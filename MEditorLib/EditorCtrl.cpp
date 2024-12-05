@@ -19,11 +19,6 @@
 #include "ParserMathText.h"
 #include "ParserException.h"
 #include "BoxHolder.h"
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
 
 #define MATH_SYMBOL_FONT1	"Lucida Bright Math Symbol"
 #define MATH_SYMBOL_FONT2	"Lucida Bright Math Italic"
@@ -886,9 +881,9 @@ int CEditorCtrl::GetBaseFontSize()
 	return m_nBaseFontSize;
 }
 
-CBox* CEditorCtrl::InsertSum(int more, char ch)
+CBox* CEditorCtrl::InsertSum(int more, TCHAR ch)
 {
-	CBox *box1=new CMRow(new CMI(""));
+	CBox *box1=new CMRow(new CMI(_T("")));
 	CBox *box2=NULL;
 	CBox *box3=NULL;
 	if (more==0){

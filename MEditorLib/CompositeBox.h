@@ -10,6 +10,7 @@
 #endif // _MSC_VER > 1000
 
 #include "Box.h"
+#include <afxwin.h>
 
 class CCompositeBox : public CBox  
 {

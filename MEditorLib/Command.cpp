@@ -5,12 +5,6 @@
 #include "stdafx.h"
 #include "Command.h"
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
-
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -52,7 +46,7 @@ void CCommand::AddCommand(CCommand *cmd)
 
 CString CCommand::ClassName()
 {
-	return "";
+	return _T("");
 }
 
 void CCommand::ClearContent()

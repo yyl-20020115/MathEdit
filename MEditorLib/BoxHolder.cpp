@@ -124,9 +124,9 @@ CString CBoxHolder::ToMathML()
 	int i;
 	CString tab="";
 	CString st;
-	BOOL bObmit=(GetChildrenCount()==1 && GetBox(0)->ClassName()!="MSymbol");
+	BOOL bObmit=(GetChildrenCount()==1 && GetBox(0)->ClassName()!=_T("MSymbol"));
 	if (!bObmit)
-		st=tab + "<mrow>" + crlf;
+		st=tab + _T("<mrow>") + crlf;
 	else
 		st="";
 	for (i=0; i<GetChildrenCount(); i++)
@@ -135,7 +135,7 @@ CString CBoxHolder::ToMathML()
 		else
 			st+=GetBox(i)->ToMathML(0);
 	if (!bObmit)
-		st+=tab + "</mrow>";
+		st+=tab + _T("</mrow>");
 	return st;
 }
 

@@ -19,7 +19,7 @@ public:
 	void Draw(CDC* pDC);
 	void Layout(CDC* pDC);
 	CMO();
-	CMO(CString st, CString MathML="", CString LaTeX="", CString form="infix");
+	CMO(CString st, CString MathML=_T(""), CString LaTeX=_T(""), CString form=_T("infix"));
 	virtual ~CMO();
 
 };

@@ -5,11 +5,6 @@
 #include "stdafx.h"
 #include "CmdInsert.h"
 
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
 #include "Cursor.h"
 #include "MI.h"
 #include "CmdDelSel.h"
@@ -142,7 +137,7 @@ void CCmdInsert::UnExecute()
 
 CString CCmdInsert::ClassName()
 {
-	return "INS";
+	return _T("INS");
 }
 
 void CCmdInsert::ClearContent()

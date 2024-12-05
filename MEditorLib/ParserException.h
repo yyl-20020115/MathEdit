@@ -14,7 +14,7 @@ class CParserException : public CException
 	DECLARE_DYNAMIC(CParserException)
 public:
 	CString GetErrMsg();
-	CParserException(int errpos=-1, CString msg="");
+	CParserException(int errpos=-1, CString msg=_T(""));
 	virtual ~CParserException();
 
 private:

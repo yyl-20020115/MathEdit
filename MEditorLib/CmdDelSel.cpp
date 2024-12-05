@@ -5,11 +5,6 @@
 #include "stdafx.h"
 #include "CmdDelSel.h"
 #include "MI.h"
-#ifdef _DEBUG
-#undef THIS_FILE
-static char THIS_FILE[]=__FILE__;
-#define new DEBUG_NEW
-#endif
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -40,7 +35,7 @@ void CCmdDelSel::Execute()
 		m_SelParent->RemoveBox(m_SelStartIndex);
 		
 	if (m_SelParent->GetChildrenCount()==0)
-		m_SelParent->AddBox(new CMI(""));
+		m_SelParent->AddBox(new CMI(_T("")));
 	if (m_SelStartIndex>0)
 		m_Editor->SetCursor(m_SelParent->GetBox(m_SelStartIndex-1));
 	else
