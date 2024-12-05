@@ -43,7 +43,7 @@ void CBoxHolder::Serialize(CArchive &ar)
 		for (int i=0; i<n; i++){
 			box=GetBox(i);
 			st=box->Signature();
-			if (st=="")
+			if (st== _T(""))
 				st=box->ClassName();
 			TRACE("Serialize Class Name: %s\n", st);
 			ar << st;
@@ -122,13 +122,13 @@ int CBoxHolder::GetHeight()
 CString CBoxHolder::ToMathML()
 {
 	int i;
-	CString tab="";
+	CString tab= _T("");
 	CString st;
 	BOOL bObmit=(GetChildrenCount()==1 && GetBox(0)->ClassName()!=_T("MSymbol"));
 	if (!bObmit)
 		st=tab + _T("<mrow>") + crlf;
 	else
-		st="";
+		st= _T("");
 	for (i=0; i<GetChildrenCount(); i++)
 		if (!bObmit)
 			st+=GetBox(i)->ToMathML(1) + crlf;

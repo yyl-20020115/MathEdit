@@ -97,12 +97,12 @@ void CBox::Draw(CDC *pDC)
 
 CString CBox::ClassName()
 {
-	return "";
+	return _T("");
 }
 
 CString CBox::ToString()
 {
-	return "";
+	return _T("");
 }
 
 void CBox::SetFontSize(int n)
@@ -200,12 +200,12 @@ CBox* CBox::RemoveBox(int nIndex)
 
 CString CBox::ToLaTex()
 {
-	return "";
+	return _T("");
 }
 
 CString CBox::ToMathML(int nLevel)
 {
-	return "";
+	return _T("");
 }
 
 CRect CBox::GetRect()
@@ -235,5 +235,5 @@ Mainly use for serialize only.
 ***************************************/
 CString CBox::Signature()
 {
-	return "";
+	return _T("");
 }

@@ -185,7 +185,7 @@ void CToolBarBtnCtrl::OnMouseMove(UINT nFlags, CPoint point)
 			{
 				int nChar=m_nCols*m_nHiliteRow+m_nHiliteCol;
 				CString strOut;
-				strOut="0";
+				strOut=_T("0");
 				strOut.SetAt(0, nChar);
 				CPoint ptWndTip((m_nHiliteCol+1)*m_nStepCol, m_nHiliteRow*m_nStepRow);
 				ClientToScreen(&ptWndTip);
@@ -209,7 +209,7 @@ void CToolBarBtnCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 
 		int nChar=m_nCols*nTempRow+nTempCol;
 		CString strOut;
-		strOut="0";
+		strOut=_T("0");
 		strOut.SetAt(0, nChar);
 		CPoint ptWndTip((nTempCol+1)*m_nStepCol, nTempRow*m_nStepRow);
 		ClientToScreen(&ptWndTip);
@@ -290,7 +290,7 @@ BOOL CToolBarBtnCtrl::PreTranslateMessage(MSG* pMsg)
 void CToolBarBtnCtrl::DrawCell(CDC* pDC, int nRow, int nCol)
 {
 	CString strOut;
-	strOut="0";
+	strOut=_T("0");
 
 	int nChar=m_nCols*nRow+nCol;
 	strOut.SetAt(0, nChar);

@@ -57,7 +57,7 @@ void CCmdDelSel::UnExecute()
 
 CString CCmdDelSel::ClassName()
 {
-	return "DELSEL";
+	return _T("DELSEL");
 }
 
 void CCmdDelSel::ClearContent()

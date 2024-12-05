@@ -97,8 +97,8 @@ BOOL CEditorDlg::OnInitDialog()
 	m_tooltip.Activate(TRUE);
 
 	// Add the tools
-	//m_tooltip.AddTool(GetDlgItem(IDC_BUTTON_UNDO), "Undo");
-	//m_tooltip.AddTool(GetDlgItem(IDC_BUTTON_REDO), "Redo");
+	//m_tooltip.AddTool(GetDlgItem(IDC_BUTTON_UNDO), _T("Undo"));
+	//m_tooltip.AddTool(GetDlgItem(IDC_BUTTON_REDO), _T("Redo"));
 
 	m_tooltip.AddTool(GetDlgItem(IDC_EQUATION),		_T("Special Operators"));
 	m_tooltip.AddTool(GetDlgItem(IDC_BRACE),		_T("Braces"));
@@ -186,83 +186,83 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 				more=0;
 				break;
 			case 1:
-				id="cos";
+				id=_T("cos");
 				more=0;
 				break;
 			case 2:
-				id="tan";
+				id=_T("tan");
 				more=0;
 				break;
 			case 3:
-				id="cot";
+				id=_T("cot");
 				more=0;
 				break;
 			case 4:
-				id="sin";
+				id=_T("sin");
 				more=1;
 				break;
 			case 5:
-				id="cos";
+				id=_T("cos");
 				more=1;
 				break;
 			case 6:
-				id="tan";
+				id=_T("tan");
 				more=1;
 				break;
 			case 7:
-				id="cot";
+				id=_T("cot");
 				more=1;
 				break;
 			case 8:
-				id="sinh";
+				id=_T("sinh");
 				more=0;
 				break;
 			case 9:
-				id="cosh";
+				id=_T("cosh");
 				more=0;
 				break;
 			case 10:
-				id="tanh";
+				id=_T("tanh");
 				more=0;
 				break;
 			case 11:
-				id="coth";
+				id=_T("coth");
 				more=0;
 				break;
 			case 12:
-				id="sinh";
+				id=_T("sinh");
 				more=1;
 				break;
 			case 13:
-				id="cosh";
+				id=_T("cosh");
 				more=1;
 				break;
 			case 14:
-				id="tanh";
+				id=_T("tanh");
 				more=1;
 				break;
 			case 15:
-				id="coth";
+				id=_T("coth");
 				more=1;
 				break;
 			case 16:
-				id="exp";
+				id=_T("exp");
 				more=0;
 				break;
 			case 17:
-				id="ln";
+				id=_T("ln");
 				more=0;
 				break;
 			case 18:
-				id="ln";
+				id=_T("ln");
 				more=2;
 				break;
 			case 19:
-				id="log";
+				id=_T("log");
 				more=2;
 				break;
 			case 21:
-				id="lim";
+				id=_T("lim");
 				more=3;
 				break;
 			}
@@ -280,24 +280,24 @@ LRESULT CEditorDlg::ToolBarCtrlSelected(WPARAM wParam , LPARAM lParam)
 
 	case IDC_PBYQ: // form toolbar Operators
 		if(wParam== 0)
-			m_Editor.InsertElement("MFrac");
+			m_Editor.InsertElement(_T("MFrac"));
 		if(wParam== 1 || wParam==2)
-			m_Editor.InsertElement("MRoot",wParam);
+			m_Editor.InsertElement(_T("MRoot"),wParam);
 		if (wParam==3)
-			m_Editor.InsertElement("MSup");
+			m_Editor.InsertElement(_T("MSup"));
 		if (wParam==4)
-			m_Editor.InsertElement("MSub");
+			m_Editor.InsertElement(_T("MSub"));
 		if (wParam==5)
-			m_Editor.InsertElement("MSubSup");
+			m_Editor.InsertElement(_T("MSubSup"));
 		if (wParam>5)
-			m_Editor.InsertElement("MUnderOver", wParam);
+			m_Editor.InsertElement(_T("MUnderOver"), wParam);
 		break;
 	case IDC_MATRIX: // form toolbar matrix
-		m_Editor.InsertElement("MTable",wParam);
+		m_Editor.InsertElement(_T("MTable"),wParam);
 		break;
 	case IDC_VECTOR: // form toolbar vector
 		//if (wParam<2)
-		m_Editor.InsertElement("MOver",wParam);
+		m_Editor.InsertElement(_T("MOver"),wParam);
 		break;
 	case IDC_ARROWS: // form toolbar arrows
 		if (wParam<m_ArrOp.GetSize() && m_ArrOp[wParam]!= _T(""))
@@ -395,7 +395,7 @@ void CEditorDlg::InitEntityList()
 	while (true){
 		if (!file.ReadString(st))
 			break;
-		if (st=="")
+		if (st==_T(""))
 			break;
 		if (st[st.GetLength()-1]!=_T('\t'))
 			st=st+_T("\t");
@@ -419,136 +419,136 @@ void CEditorDlg::InitEntityList()
 void CEditorDlg::InitToolbarEntity()
 {
 	m_LowerGreek.SetSize(28);
-	m_LowerGreek[0]="alpha";
-	m_LowerGreek[1]="beta";
-	m_LowerGreek[2]="chi";
-	m_LowerGreek[3]="delta";
-	m_LowerGreek[4]="epsi";
-	m_LowerGreek[5]="phi";
-	m_LowerGreek[6]="phiv";
-	m_LowerGreek[7]="gamma";
-	m_LowerGreek[8]="eta";
-	m_LowerGreek[9]="iota";
-	m_LowerGreek[10]="kappa";
-	m_LowerGreek[11]="lambda";
-	m_LowerGreek[12]="mu";
-	m_LowerGreek[13]="nu";
-	m_LowerGreek[14]="omicron";
-	m_LowerGreek[15]="pi";
-	m_LowerGreek[16]="theta";
-	m_LowerGreek[17]="rho";
-	m_LowerGreek[18]="sigma";
-	m_LowerGreek[19]="tau";
-	m_LowerGreek[20]="upsi";
-	m_LowerGreek[21]="piv";
-	m_LowerGreek[22]="omega";
-	m_LowerGreek[23]="xi";
-	m_LowerGreek[24]="psi";
-	m_LowerGreek[25]="zeta";
-	m_LowerGreek[26]="part";
-	m_LowerGreek[27]="";
+	m_LowerGreek[0]=_T("alpha");
+	m_LowerGreek[1]=_T("beta");
+	m_LowerGreek[2]=_T("chi");
+	m_LowerGreek[3]=_T("delta");
+	m_LowerGreek[4]=_T("epsi");
+	m_LowerGreek[5]=_T("phi");
+	m_LowerGreek[6]=_T("phiv");
+	m_LowerGreek[7]=_T("gamma");
+	m_LowerGreek[8]=_T("eta");
+	m_LowerGreek[9]=_T("iota");
+	m_LowerGreek[10]=_T("kappa");
+	m_LowerGreek[11]=_T("lambda");
+	m_LowerGreek[12]=_T("mu");
+	m_LowerGreek[13]=_T("nu");
+	m_LowerGreek[14]=_T("omicron");
+	m_LowerGreek[15]=_T("pi");
+	m_LowerGreek[16]=_T("theta");
+	m_LowerGreek[17]=_T("rho");
+	m_LowerGreek[18]=_T("sigma");
+	m_LowerGreek[19]=_T("tau");
+	m_LowerGreek[20]=_T("upsi");
+	m_LowerGreek[21]=_T("piv");
+	m_LowerGreek[22]=_T("omega");
+	m_LowerGreek[23]=_T("xi");
+	m_LowerGreek[24]=_T("psi");
+	m_LowerGreek[25]=_T("zeta");
+	m_LowerGreek[26]=_T("part");
+	m_LowerGreek[27]=_T("");
 
 	m_UpperGreek.SetSize(26);
-	m_UpperGreek[0]="Alpha";
-	m_UpperGreek[1]="Beta";
-	m_UpperGreek[2]="Chi";
-	m_UpperGreek[3]="Delta";
-	m_UpperGreek[4]="Epsi";
-	m_UpperGreek[5]="Phi";
-	m_UpperGreek[6]="Gamma";
-	m_UpperGreek[7]="Eta";
-	m_UpperGreek[8]="Iota";
-	m_UpperGreek[9]="thetav";
-	m_UpperGreek[10]="Kappa";
-	m_UpperGreek[11]="Lamda";
-	m_UpperGreek[12]="Mu";
-	m_UpperGreek[13]="Nu";
-	m_UpperGreek[14]="Omicron";
-	m_UpperGreek[15]="Pi";
-	m_UpperGreek[16]="Theta";
-	m_UpperGreek[17]="Rho";
-	m_UpperGreek[18]="Sigma";
-	m_UpperGreek[19]="Tau";
-	m_UpperGreek[20]="Upsilon";
-	m_UpperGreek[21]="sigmav";
-	m_UpperGreek[22]="Omega";
-	m_UpperGreek[23]="Xi";
-	m_UpperGreek[24]="Psi";
-	m_UpperGreek[25]="Zeta";
+	m_UpperGreek[0]=_T("Alpha");
+	m_UpperGreek[1]=_T("Beta");
+	m_UpperGreek[2]=_T("Chi");
+	m_UpperGreek[3]=_T("Delta");
+	m_UpperGreek[4]=_T("Epsi");
+	m_UpperGreek[5]=_T("Phi");
+	m_UpperGreek[6]=_T("Gamma");
+	m_UpperGreek[7]=_T("Eta");
+	m_UpperGreek[8]=_T("Iota");
+	m_UpperGreek[9]=_T("thetav");
+	m_UpperGreek[10]=_T("Kappa");
+	m_UpperGreek[11]=_T("Lamda");
+	m_UpperGreek[12]=_T("Mu");
+	m_UpperGreek[13]=_T("Nu");
+	m_UpperGreek[14]=_T("Omicron");
+	m_UpperGreek[15]=_T("Pi");
+	m_UpperGreek[16]=_T("Theta");
+	m_UpperGreek[17]=_T("Rho");
+	m_UpperGreek[18]=_T("Sigma");
+	m_UpperGreek[19]=_T("Tau");
+	m_UpperGreek[20]=_T("Upsilon");
+	m_UpperGreek[21]=_T("sigmav");
+	m_UpperGreek[22]=_T("Omega");
+	m_UpperGreek[23]=_T("Xi");
+	m_UpperGreek[24]=_T("Psi");
+	m_UpperGreek[25]=_T("Zeta");
 
 	m_StdOp.SetSize(20);
-	m_StdOp[0]="plusmn";
-	m_StdOp[1]="mnplus";
-	m_StdOp[2]="divide";
-	m_StdOp[3]="le";
-	m_StdOp[4]="ge";
-	m_StdOp[5]="ne";
-	m_StdOp[6]="equiv";
-	m_StdOp[7]="ap";
-	m_StdOp[8]="cong";
-	m_StdOp[9]="cap";
-	m_StdOp[10]="cup";
-	m_StdOp[11]="sup";
-	m_StdOp[12]="supE";
-	m_StdOp[13]="nsub";
-	m_StdOp[14]="sub";
-	m_StdOp[15]="subE";
-	m_StdOp[16]="isin";
-	m_StdOp[17]="notin";
-	m_StdOp[18]="exist";
-	m_StdOp[19]="forall";
+	m_StdOp[0]=_T("plusmn");
+	m_StdOp[1]=_T("mnplus");
+	m_StdOp[2]=_T("divide");
+	m_StdOp[3]=_T("le");
+	m_StdOp[4]=_T("ge");
+	m_StdOp[5]=_T("ne");
+	m_StdOp[6]=_T("equiv");
+	m_StdOp[7]=_T("ap");
+	m_StdOp[8]=_T("cong");
+	m_StdOp[9]=_T("cap");
+	m_StdOp[10]=_T("cup");
+	m_StdOp[11]=_T("sup");
+	m_StdOp[12]=_T("supE");
+	m_StdOp[13]=_T("nsub");
+	m_StdOp[14]=_T("sub");
+	m_StdOp[15]=_T("subE");
+	m_StdOp[16]=_T("isin");
+	m_StdOp[17]=_T("notin");
+	m_StdOp[18]=_T("exist");
+	m_StdOp[19]=_T("forall");
 
 	m_GeoOp.SetSize(12);
-	m_GeoOp[0]="infin";
-	m_GeoOp[1]="esim";
-	m_GeoOp[2]="sime";
-	m_GeoOp[3]="wreath";
-	m_GeoOp[4]="ang";
-	m_GeoOp[5]="angmsd";
-	m_GeoOp[6]="angsph";
-	m_GeoOp[7]="par";
-	m_GeoOp[8]="vangrt";
-	m_GeoOp[9]="lrtri";
-	m_GeoOp[10]="xutri";
-	m_GeoOp[11]="bottom";
+	m_GeoOp[0]=_T("infin");
+	m_GeoOp[1]=_T("esim");
+	m_GeoOp[2]=_T("sime");
+	m_GeoOp[3]=_T("wreath");
+	m_GeoOp[4]=_T("ang");
+	m_GeoOp[5]=_T("angmsd");
+	m_GeoOp[6]=_T("angsph");
+	m_GeoOp[7]=_T("par");
+	m_GeoOp[8]=_T("vangrt");
+	m_GeoOp[9]=_T("lrtri");
+	m_GeoOp[10]=_T("xutri");
+	m_GeoOp[11]=_T("bottom");
 
 	m_ArrOp.SetSize(12);
-	m_ArrOp[0]="rarr";
-	m_ArrOp[1]="larr";
-	m_ArrOp[2]="harr";
-	m_ArrOp[3]="uarr";
-	m_ArrOp[4]="darr";
-	m_ArrOp[5]="varr";
-	m_ArrOp[6]="rArr";
-	m_ArrOp[7]="lArr";
-	m_ArrOp[8]="hArr";
-	m_ArrOp[9]="uArr";
-	m_ArrOp[10]="dArr";
-	m_ArrOp[11]="vArr";
+	m_ArrOp[0]=_T("rarr");
+	m_ArrOp[1]=_T("larr");
+	m_ArrOp[2]=_T("harr");
+	m_ArrOp[3]=_T("uarr");
+	m_ArrOp[4]=_T("darr");
+	m_ArrOp[5]=_T("varr");
+	m_ArrOp[6]=_T("rArr");
+	m_ArrOp[7]=_T("lArr");
+	m_ArrOp[8]=_T("hArr");
+	m_ArrOp[9]=_T("uArr");
+	m_ArrOp[10]=_T("dArr");
+	m_ArrOp[11]=_T("vArr");
 
 	m_DotOp.SetSize(12);
-	m_DotOp[0]="there4";
-	m_DotOp[1]="becaus";
-	m_DotOp[2]="ratio";
-	m_DotOp[3]="Colon";
-	m_DotOp[4]="minusd";
-	m_DotOp[5]="mDot";
-	m_DotOp[6]="mDDot";
-	m_DotOp[7]="homtht";
-	m_DotOp[8]="esdot";
-	m_DotOp[9]="eDot";
-	m_DotOp[10]="efDot";
-	m_DotOp[11]="erDot";
+	m_DotOp[0]=_T("there4");
+	m_DotOp[1]=_T("becaus");
+	m_DotOp[2]=_T("ratio");
+	m_DotOp[3]=_T("Colon");
+	m_DotOp[4]=_T("minusd");
+	m_DotOp[5]=_T("mDot");
+	m_DotOp[6]=_T("mDDot");
+	m_DotOp[7]=_T("homtht");
+	m_DotOp[8]=_T("esdot");
+	m_DotOp[9]=_T("eDot");
+	m_DotOp[10]=_T("efDot");
+	m_DotOp[11]=_T("erDot");
 
 	m_MoreSym.SetSize(8);
-	m_MoreSym[0]="not";
-	m_MoreSym[1]="emptyv";
-	m_MoreSym[2]="oplus";
-	m_MoreSym[3]="ominus";
-	m_MoreSym[4]="odot";
-	m_MoreSym[5]="real";
-	m_MoreSym[6]="image";
-	m_MoreSym[7]="aleph";
+	m_MoreSym[0]=_T("not");
+	m_MoreSym[1]=_T("emptyv");
+	m_MoreSym[2]=_T("oplus");
+	m_MoreSym[3]=_T("ominus");
+	m_MoreSym[4]=_T("odot");
+	m_MoreSym[5]=_T("real");
+	m_MoreSym[6]=_T("image");
+	m_MoreSym[7]=_T("aleph");
 }
 
 int CEditorDlg::HexToInt(CString st)
@@ -608,9 +608,9 @@ void CEditorDlg::OnSaveFile()
 		CString strFile=fdlg.m_ofn.lpstrFile;
 		CString ext=fdlg.GetFileExt();
 		ext.MakeLower();
-		if (ext=="wmf")
+		if (ext==_T("wmf"))
 			m_Editor.ExportToWMF(strFile);
-		else if (ext=="meq")
+		else if (ext==_T("meq"))
 			m_Editor.SaveFile(strFile);
 		else{
 			CString st=m_Editor.GetMathML();

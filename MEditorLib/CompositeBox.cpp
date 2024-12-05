@@ -140,7 +140,7 @@ void CCompositeBox::Serialize(CArchive &ar)
 		for (int i=0; i<n; i++){
 			box=GetBox(i);
 			st=box->Signature();
-			if (st=="")
+			if (st== _T(""))
 				st=box->ClassName();
 			TRACE("Serialize Class Name: %s\n", st);
 			ar << st;

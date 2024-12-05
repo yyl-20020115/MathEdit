@@ -54,7 +54,7 @@ void CCmdDelete::UnExecute()
 
 CString CCmdDelete::ClassName()
 {
-	return "DEL";
+	return _T("DEL");
 }
 
 void CCmdDelete::ClearContent()

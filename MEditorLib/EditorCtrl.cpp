@@ -40,7 +40,7 @@ CEditorCtrl::CEditorCtrl()
 	_ASSERT(CF_MATHEQU!=0);
 	m_nLeftMargin=0;
 	m_nTopMargin=0;
-	m_Math=new CMRow(new CMI(""));
+	m_Math=new CMRow(new CMI());
 
 	m_Cursor=new CCursor();
 	m_Cursor->SetWindow(this);
@@ -54,140 +54,140 @@ CEditorCtrl::CEditorCtrl()
 	m_Math->SetFontSize(m_nBaseFontSize);
 	
 	m_bCanAdd=TRUE;
-	m_strFormula="";
+	m_strFormula=_T("");
 	m_bCopyMathML=TRUE;
 	m_bCopyImage=TRUE;
 
 	origins.SetSize(26);
 
-	origins[0].strName="`";
-	origins[0].strMathML="&grave;";
-	origins[0].strLaTeX="grave";
+	origins[0].strName=_T("`");
+	origins[0].strMathML=_T("&grave;");
+	origins[0].strLaTeX=_T("grave");
 	origins[0].bOperator=TRUE;
 
-	origins[1].strName="~";
-	origins[1].strMathML="~";
-	origins[1].strLaTeX="~";
+	origins[1].strName=_T("~");
+	origins[1].strMathML=_T("~");
+	origins[1].strLaTeX=_T("~");
 	origins[1].bOperator=TRUE;
 
-	origins[2].strName="!";
-	origins[2].strMathML="!";
-	origins[2].strLaTeX="!";
+	origins[2].strName=_T("!");
+	origins[2].strMathML=_T("!");
+	origins[2].strLaTeX=_T("!");
 	origins[2].bOperator=TRUE;
 
-	origins[3].strName="@";
-	origins[3].strMathML="&commat;";
-	origins[3].strLaTeX="commat";
+	origins[3].strName=_T("@");
+	origins[3].strMathML=_T("&commat;");
+	origins[3].strLaTeX=_T("commat");
 	origins[3].bOperator=TRUE;
 
-	origins[4].strName="#";
-	origins[4].strMathML="&num;";
-	origins[4].strLaTeX="num";
+	origins[4].strName=_T("#");
+	origins[4].strMathML=_T("&num;");
+	origins[4].strLaTeX=_T("num");
 	origins[4].bOperator=TRUE;
 
-	origins[5].strName="$";
-	origins[5].strMathML="$";
-	origins[5].strLaTeX="$";
+	origins[5].strName=_T("$");
+	origins[5].strMathML=_T("$");
+	origins[5].strLaTeX=_T("$");
 	origins[5].bOperator=FALSE;
 
-	origins[6].strName="%";
-	origins[6].strMathML="%";
-	origins[6].strLaTeX="%";
+	origins[6].strName=_T("%");
+	origins[6].strMathML=_T("%");
+	origins[6].strLaTeX=_T("%");
 	origins[6].bOperator=TRUE;
 
-	origins[7].strName="^";
-	origins[7].strMathML="&circ;";
-	origins[7].strLaTeX="circ";
+	origins[7].strName=_T("^");
+	origins[7].strMathML=_T("&circ;");
+	origins[7].strLaTeX=_T("circ");
 	origins[7].bOperator=TRUE;
 
-	origins[8].strName="&";
-	origins[8].strMathML="&amp;";
-	origins[8].strLaTeX="amp";
+	origins[8].strName=_T("&");
+	origins[8].strMathML=_T("&amp;");
+	origins[8].strLaTeX=_T("amp");
 	origins[8].bOperator=TRUE;
 
-	origins[9].strName="(";
-	origins[9].strMathML="(";
-	origins[9].strLaTeX="(";
+	origins[9].strName=_T("(");
+	origins[9].strMathML=_T("(");
+	origins[9].strLaTeX=_T("(");
 	origins[9].bOperator=TRUE;
 
-	origins[10].strName=")";
-	origins[10].strMathML=")";
-	origins[10].strLaTeX=")";
+	origins[10].strName=_T(")");
+	origins[10].strMathML=_T(")");
+	origins[10].strLaTeX=_T(")");
 	origins[10].bOperator=TRUE;
 
-	origins[11].strName="_";
-	origins[11].strMathML="&lowbar;";
-	origins[11].strLaTeX="lowbar";
+	origins[11].strName=_T("_");
+	origins[11].strMathML=_T("&lowbar;");
+	origins[11].strLaTeX=_T("lowbar");
 	origins[11].bOperator=TRUE;
 
-	origins[12].strName="[";
-	origins[12].strMathML="[";
-	origins[12].strLaTeX="[";
+	origins[12].strName=_T("[");
+	origins[12].strMathML=_T("[");
+	origins[12].strLaTeX=_T("[");
 	origins[12].bOperator=TRUE;
 
-	origins[13].strName="{";
-	origins[13].strMathML="{";
-	origins[13].strLaTeX="{";
+	origins[13].strName=_T("{");
+	origins[13].strMathML=_T("{");
+	origins[13].strLaTeX=_T("{");
 	origins[13].bOperator=TRUE;
 
-	origins[14].strName="]";
-	origins[14].strMathML="]";
-	origins[14].strLaTeX="]";
+	origins[14].strName=_T("]");
+	origins[14].strMathML=_T("]");
+	origins[14].strLaTeX=_T("]");
 	origins[14].bOperator=TRUE;
 
-	origins[15].strName="}";
-	origins[15].strMathML="}";
-	origins[15].strLaTeX="}";
+	origins[15].strName=_T("}");
+	origins[15].strMathML=_T("}");
+	origins[15].strLaTeX=_T("}");
 	origins[15].bOperator=TRUE;
 
-	origins[16].strName=":";
-	origins[16].strMathML=":";
-	origins[16].strLaTeX=":";
+	origins[16].strName=_T(":");
+	origins[16].strMathML=_T(":");
+	origins[16].strLaTeX=_T(":");
 	origins[16].bOperator=TRUE;
 
-	origins[17].strName=";";
-	origins[17].strMathML=";";
-	origins[17].strLaTeX=";";
+	origins[17].strName=_T(";");
+	origins[17].strMathML=_T(";");
+	origins[17].strLaTeX=_T(";");
 	origins[17].bOperator=TRUE;
 
-	origins[18].strName="'";
-	origins[18].strMathML="&apos;";
-	origins[18].strLaTeX="apos";
+	origins[18].strName=_T("'");
+	origins[18].strMathML=_T("&apos;");
+	origins[18].strLaTeX=_T("apos");
 	origins[18].bOperator=TRUE;
 
-	origins[19].strName="\"";
-	origins[19].strMathML="&quot;";
-	origins[19].strLaTeX="quot";
+	origins[19].strName=_T("\"");
+	origins[19].strMathML=_T("&quot;");
+	origins[19].strLaTeX=_T("quot");
 	origins[19].bOperator=TRUE;
 
-	origins[20].strName=",";
-	origins[20].strMathML=",";
-	origins[20].strLaTeX=",";
+	origins[20].strName=_T(",");
+	origins[20].strMathML=_T(",");
+	origins[20].strLaTeX=_T(",");
 	origins[20].bOperator=TRUE;
 
-	origins[21].strName=".";
-	origins[21].strMathML=".";
-	origins[21].strLaTeX=".";
+	origins[21].strName=_T(".");
+	origins[21].strMathML=_T(".");
+	origins[21].strLaTeX=_T(".");
 	origins[21].bOperator=TRUE;
 
-	origins[22].strName="/";
-	origins[22].strMathML="&sol;";
-	origins[22].strLaTeX="sol";
+	origins[22].strName=_T("/");
+	origins[22].strMathML=_T("&sol;");
+	origins[22].strLaTeX=_T("sol");
 	origins[22].bOperator=TRUE;
 
-	origins[23].strName="?";
-	origins[23].strMathML="?";
-	origins[23].strLaTeX="?";
+	origins[23].strName=_T("?");
+	origins[23].strMathML=_T("?");
+	origins[23].strLaTeX=_T("?");
 	origins[23].bOperator=TRUE;
 
-	origins[24].strName="\\";
-	origins[24].strMathML="&bsol;";
-	origins[24].strLaTeX="bsol";
+	origins[24].strName=_T("\\");
+	origins[24].strMathML=_T("&bsol;");
+	origins[24].strLaTeX=_T("bsol");
 	origins[24].bOperator=TRUE;
 
-	origins[25].strName="|";
-	origins[25].strMathML="&verbar;";
-	origins[25].strLaTeX="verbar";
+	origins[25].strName=_T("|");
+	origins[25].strMathML=_T("&verbar;");
+	origins[25].strLaTeX=_T("verbar");
 	origins[25].bOperator=TRUE;
 
 }
@@ -479,7 +479,7 @@ int CEditorCtrl::DeleteSelection()
 		m_StartBox=NULL;
 		m_EndBox=NULL;
 		if (box->GetChildrenCount()==0)
-			box->AddBox(new CMI(""));
+			box->AddBox(new CMI(_T("")));
 		if (k>0){
 			m_Cursor->SetBox(box->GetBox(k-1));
 			m_Cursor->SetEndBox(TRUE);
@@ -537,7 +537,7 @@ void CEditorCtrl::InsertBox(CBox *box)
 		//them cho no mot template truoc khi chen box
 		//m_Cursor->SetBox(m_EndBox);
 		if (box2->GetChildrenCount()==0)
-			box2->AddBox(new CMI(""));
+			box2->AddBox(new CMI(_T("")));
 		if (!box2->IsTemplate())
 			box2->InsertBox(k,box);
 		else
@@ -1471,10 +1471,10 @@ CEditorCtrl::MATH_ENTITY CEditorCtrl::GetEntityInfo(CString entity)
 	MATH_ENTITY me;
 	me.bInverted=FALSE;
 	me.CharCode=0;
-	me.EntityName="";
-	me.FontName="";
-	me.LaTexName="";
-	me.MathMLName="";
+	me.EntityName=_T("");
+	me.FontName=_T("");
+	me.LaTexName=_T("");
+	me.MathMLName=_T("");
 	for (i=0; i<entities.GetSize(); i++)
 		if (entities[i].EntityName==entity){
 			me=entities[i];
@@ -1526,7 +1526,7 @@ void CEditorCtrl::InsertSpecialElement(CString more)
 CString CEditorCtrl::GetMathML()
 {
 	if (!m_Math)
-		return "";
+		return _T("");
 	else
 		return m_Math->ToMathML(1);
 }
@@ -1784,7 +1784,7 @@ void CEditorCtrl::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	int minpos, maxpos;
 	SCROLLINFO sinfo;
 	CClientDC dc(this);
-	CSize sz=dc.GetTextExtent("X");
+	CSize sz=dc.GetTextExtent(_T("X"));
 	curpos=GetScrollPos(SB_VERT);
 	GetScrollRange(SB_VERT, &minpos, &maxpos);
 	newpos=curpos;

@@ -89,7 +89,7 @@ void CCmdInsert::UnExecute()
 	box=m_Box->GetParent();
 	if (box->GetChildrenCount()==1){
 		m_Box=box->RemoveBox(0);
-		box->AddBox(new CMI(""));
+		box->AddBox(new CMI());
 		m_Editor->SetCursor(box->GetBox(0));
 		return;
 	}
@@ -109,7 +109,7 @@ void CCmdInsert::UnExecute()
 			m_Editor->SetEndSel(m_CursorParent->GetBox(m_SelStartIndex+m_SelBox.GetSize()-1));
 		}
 		else{
-			m_CursorParent->AddBox(new CMI(""));
+			m_CursorParent->AddBox(new CMI());
 			m_Editor->SetStartSel(NULL);
 			m_Editor->SetEndSel(NULL);
 		}

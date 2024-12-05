@@ -49,7 +49,7 @@ void CCmdTyping::Execute()
 		for (int i=0; i<m_SelBox.GetSize(); i++)
 			m_ParentBox->RemoveBox(m_SelStartIndex);
 		if (m_ParentBox->GetChildrenCount()==0)
-			m_ParentBox->AddBox(new CMI(""));
+			m_ParentBox->AddBox(new CMI());
 		m_Editor->SetStartSel(NULL);
 		m_Editor->SetEndSel(NULL);
 	}
@@ -84,7 +84,7 @@ void CCmdTyping::UnExecute()
 		m_Editor->SetEndSel(m_ParentBox->GetBox(m_SelStartIndex+m_SelBox.GetSize()-1));
 	}
 	if (m_ParentBox->GetChildrenCount()==0)
-		m_ParentBox->AddBox(new CMI(""));
+		m_ParentBox->AddBox(new CMI());
 	m_Editor->SetCursor(m_ParentBox->GetBox(m_CursorPos),m_bEndBox);
 }
 
